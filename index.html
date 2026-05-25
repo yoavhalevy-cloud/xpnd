@@ -523,37 +523,23 @@
       launchBtn.innerHTML = '<span>שולח...</span>';
 
     try {
-        // Hidden iframe form submission - works in ALL browsers, ALL contexts
-        await new Promise((resolve, reject) => {
-          const iframeName = 'xpnd_iframe_' + Date.now();
-          const iframe = document.createElement('iframe');
-          iframe.name = iframeName;
-          iframe.style.display = 'none';
-          document.body.appendChild(iframe);
+        const dataParam = encodeURIComponent(JSON.stringify(payload));
+        const sep = state.settings.webhookUrl.includes('?') ? '&' : '?';
+        const url = state.settings.webhookUrl + sep + 'data=' + dataParam;
 
-          const form = document.createElement('form');
-          form.method = 'POST';
-          form.action = state.settings.webhookUrl;
-          form.target = iframeName;
-          form.style.display = 'none';
+        // Open in a new window briefly - bypasses ALL Safari PWA restrictions
+        const win = window.open(url, '_blank');
+        if (!win) {
+          throw new Error('הדפדפן חסם — אפשר חלונות קופצים');
+        }
 
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = 'data';
-          input.value = JSON.stringify(payload);
-          form.appendChild(input);
-
-          document.body.appendChild(form);
-
-          const cleanup = () => {
-            setTimeout(() => {
-              if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
-              if (form.parentNode) form.parentNode.removeChild(form);
-            }, 1000);
-          };
-
-          iframe.onload = () => { cleanup(); resolve(); };
-          iframe.onerror = () => { cleanup(); reject(new Error('שגיאת רשת')); };
+        // Close it after 2.5 seconds (enough time for the request to complete)
+        await new Promise(resolve => {
+          setTimeout(() => {
+            try { win.close(); } catch (e) {}
+            resolve();
+          }, 2500);
+        });
 
           form.submit();
 
