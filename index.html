@@ -527,19 +527,11 @@
         const sep = state.settings.webhookUrl.includes('?') ? '&' : '?';
         const url = state.settings.webhookUrl + sep + 'data=' + dataParam;
 
-        // Open in a new window briefly - bypasses ALL Safari PWA restrictions
-        const win = window.open(url, '_blank');
-        if (!win) {
-          throw new Error('הדפדפן חסם — אפשר חלונות קופצים');
-        }
+        const response = await fetch(url, { method: 'GET', redirect: 'follow' });
+        const text = await response.text();
+        const result = JSON.parse(text);
 
-        // Close it after 2.5 seconds (enough time for the request to complete)
-        await new Promise(resolve => {
-          setTimeout(() => {
-            try { win.close(); } catch (e) {}
-            resolve();
-          }, 2500);
-        });
+        if (!result.ok) throw new Error(result.error || 'שגיאה לא ידועה');
 
           form.submit();
 
