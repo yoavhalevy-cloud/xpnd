@@ -522,18 +522,28 @@
       const originalText = launchBtn.innerHTML;
       launchBtn.innerHTML = '<span>שולח...</span>';
 
-     try {
+    try {
         const dataParam = encodeURIComponent(JSON.stringify(payload));
         const sep = state.settings.webhookUrl.includes('?') ? '&' : '?';
-        const url = state.settings.webhookUrl + sep + 'data=' + dataParam;
+        const callbackName = 'xpndCb' + Date.now();
+        const url = state.settings.webhookUrl + sep + 'data=' + dataParam + '&callback=' + callbackName;
 
-        // Send via image trick - bypasses CORS/PWA fetch restrictions in Safari
+        // JSONP - works around all PWA/CORS restrictions
         const result = await new Promise((resolve, reject) => {
-          const img = new Image();
-          const timeout = setTimeout(() => reject(new Error('timeout')), 15000);
-          img.onload = () => { clearTimeout(timeout); resolve({ ok: true }); };
-          img.onerror = () => { clearTimeout(timeout); resolve({ ok: true }); };
-          img.src = url + '&_=' + Date.now();
+          const script = document.createElement('script');
+          const timeout = setTimeout(() => {
+            cleanup();
+            reject(new Error('timeout - בדוק אינטרנט'));
+          }, 15000);
+          function cleanup() {
+            clearTimeout(timeout);
+            delete window[callbackName];
+            if (script.parentNode) script.parentNode.removeChild(script);
+          }
+          window[callbackName] = (data) => { cleanup(); resolve(data); };
+          script.onerror = () => { cleanup(); reject(new Error('שגיאת רשת')); };
+          script.src = url;
+          document.body.appendChild(script);
         });
 
         if (!result.ok) throw new Error(result.error || 'שגיאה לא ידועה');
