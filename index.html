@@ -522,14 +522,21 @@
       const originalText = launchBtn.innerHTML;
       launchBtn.innerHTML = '<span>שולח...</span>';
 
-      try {
+     try {
         const dataParam = encodeURIComponent(JSON.stringify(payload));
         const sep = state.settings.webhookUrl.includes('?') ? '&' : '?';
         const url = state.settings.webhookUrl + sep + 'data=' + dataParam;
-        const response = await fetch(url, { method: 'GET', redirect: 'follow' });
-        const result = await response.json();
-        if (!result.ok) throw new Error(result.error || 'שגיאה לא ידועה');
 
+        // Send via image trick - bypasses CORS/PWA fetch restrictions in Safari
+        const result = await new Promise((resolve, reject) => {
+          const img = new Image();
+          const timeout = setTimeout(() => reject(new Error('timeout')), 15000);
+          img.onload = () => { clearTimeout(timeout); resolve({ ok: true }); };
+          img.onerror = () => { clearTimeout(timeout); resolve({ ok: true }); };
+          img.src = url + '&_=' + Date.now();
+        });
+
+        if (!result.ok) throw new Error(result.error || 'שגיאה לא ידועה');
         showToast('✓ ההוצאה נשלחה לטבלה', 'success');
         state.amount = '';
         state.category = null;
