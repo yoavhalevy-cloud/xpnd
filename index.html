@@ -33,507 +33,191 @@
       --radius: 16px;
       --radius-sm: 10px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html, body {
-      background: var(--bg);
-      color: var(--ink);
+      background: var(--bg); color: var(--ink);
       font-family: 'Heebo', -apple-system, sans-serif;
-      font-size: 16px;
-      line-height: 1.4;
-      overscroll-behavior: none;
-      -webkit-font-smoothing: antialiased;
+      font-size: 16px; line-height: 1.4;
+      overscroll-behavior: none; -webkit-font-smoothing: antialiased;
     }
-
     body {
-      min-height: 100vh;
-      min-height: 100dvh;
+      min-height: 100vh; min-height: 100dvh;
       padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
     }
-
     .app {
-      flex: 1;
-      max-width: 480px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 24px 20px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
+      flex: 1; max-width: 480px; margin: 0 auto; width: 100%;
+      padding: 24px 20px 40px; display: flex; flex-direction: column; gap: 28px;
     }
-
-    /* ===== HEADER ===== */
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      padding-top: 12px;
-    }
-
+    .header { display: flex; flex-direction: column; align-items: center; gap: 4px; padding-top: 12px; }
     .logo {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 56px;
-      font-weight: 600;
-      color: var(--denim);
-      letter-spacing: -2.5px;
-      line-height: 1;
+      font-family: 'Fraunces', Georgia, serif; font-size: 56px; font-weight: 600;
+      color: var(--denim); letter-spacing: -2.5px; line-height: 1;
       font-variation-settings: "opsz" 144;
     }
-
     .logo-tagline {
-      font-family: 'Heebo', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--ink-soft);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-top: 6px;
+      font-family: 'Heebo', sans-serif; font-size: 11px; font-weight: 400;
+      color: var(--ink-soft); letter-spacing: 4px; text-transform: uppercase; margin-top: 6px;
     }
-
-    /* ===== AMOUNT DISPLAY ===== */
     .amount-section {
-      background: var(--bg-elevated);
-      border-radius: var(--radius);
-      padding: 28px 24px 24px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line-soft);
+      background: var(--bg-elevated); border-radius: var(--radius);
+      padding: 28px 24px 24px; box-shadow: var(--shadow); border: 1px solid var(--line-soft);
     }
-
-    .amount-display {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-
+    .amount-display { text-align: center; margin-bottom: 18px; }
     .amount-value {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 60px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1;
-      letter-spacing: -2px;
-      direction: ltr;
+      font-family: 'Fraunces', Georgia, serif; font-size: 60px; font-weight: 500;
+      color: var(--ink); line-height: 1; letter-spacing: -2px; direction: ltr;
       font-variation-settings: "opsz" 144;
     }
-
-    .amount-value.empty {
-      color: var(--line);
-    }
-
-    .amount-currency-symbol {
-      font-size: 32px;
-      color: var(--denim);
-      margin-inline-end: 8px;
-      font-weight: 400;
-    }
-
-    .amount-converted {
-      margin-top: 10px;
-      font-size: 13px;
-      color: var(--ink-soft);
-      min-height: 18px;
-      direction: ltr;
-    }
-
-    .amount-converted span {
-      margin: 0 6px;
-    }
-
-    /* ===== CURRENCY PILLS ===== */
+    .amount-value.empty { color: var(--line); }
+    .amount-currency-symbol { font-size: 32px; color: var(--denim); margin-inline-end: 8px; font-weight: 400; }
+    .amount-converted { margin-top: 10px; font-size: 13px; color: var(--ink-soft); min-height: 18px; direction: ltr; }
+    .amount-converted span { margin: 0 6px; }
     .currency-row {
-      display: flex;
-      gap: 6px;
-      justify-content: center;
-      background: var(--denim-faint);
-      padding: 4px;
-      border-radius: 999px;
+      display: flex; gap: 6px; justify-content: center;
+      background: var(--denim-faint); padding: 4px; border-radius: 999px;
     }
-
     .currency-pill {
-      flex: 1;
-      border: none;
-      background: transparent;
-      padding: 9px 8px;
-      border-radius: 999px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      cursor: pointer;
-      transition: all 0.2s ease;
+      flex: 1; border: none; background: transparent;
+      padding: 9px 8px; border-radius: 999px;
+      font-family: 'Heebo', sans-serif; font-size: 14px; font-weight: 500;
+      color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease;
     }
-
     .currency-pill.active {
-      background: var(--denim);
-      color: var(--bg);
+      background: var(--denim); color: var(--bg);
       box-shadow: 0 2px 8px rgba(59, 95, 138, 0.25);
     }
-
-    /* ===== KEYPAD ===== */
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
+    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .key {
-      background: var(--bg-elevated);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius-sm);
-      padding: 18px 0;
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 26px;
-      font-weight: 500;
-      color: var(--ink);
-      cursor: pointer;
-      transition: all 0.15s ease;
+      background: var(--bg-elevated); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm); padding: 18px 0;
+      font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 500;
+      color: var(--ink); cursor: pointer; transition: all 0.15s ease;
       box-shadow: 0 1px 2px rgba(59, 95, 138, 0.04);
       font-variation-settings: "opsz" 144;
     }
-
-    .key:active {
-      background: var(--denim-faint);
-      transform: scale(0.96);
-    }
-
-    .key-action {
-      color: var(--denim);
-      font-family: 'Heebo', sans-serif;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    /* ===== SECTIONS ===== */
+    .key:active { background: var(--denim-faint); transform: scale(0.96); }
+    .key-action { color: var(--denim); font-family: 'Heebo', sans-serif; font-size: 22px; font-weight: 600; }
     .section-label {
-      font-family: 'Heebo', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      padding-inline-start: 4px;
+      font-family: 'Heebo', sans-serif; font-size: 11px; font-weight: 500;
+      color: var(--ink-soft); letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 12px; padding-inline-start: 4px;
     }
-
-    /* ===== CATEGORIES ===== */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
+    .categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .cat {
-      background: var(--bg-elevated);
-      border: 1.5px solid var(--line-soft);
-      border-radius: var(--radius-sm);
-      padding: 14px 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
+      background: var(--bg-elevated); border: 1.5px solid var(--line-soft);
+      border-radius: var(--radius-sm); padding: 14px 12px;
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
       transition: all 0.2s ease;
-      font-family: 'Heebo', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--ink);
-      text-align: right;
+      font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 500;
+      color: var(--ink); text-align: right;
     }
-
-    .cat-icon {
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .cat.active {
-      background: var(--denim);
-      border-color: var(--denim);
-      color: var(--bg);
-      box-shadow: var(--shadow);
-    }
-
-    /* ===== DATE ===== */
+    .cat-icon { font-size: 22px; line-height: 1; }
+    .cat.active { background: var(--denim); border-color: var(--denim); color: var(--bg); box-shadow: var(--shadow); }
     .date-wrap {
-      background: var(--bg-elevated);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      background: var(--bg-elevated); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
-
-    .date-label {
-      font-size: 14px;
-      color: var(--ink-soft);
-      font-weight: 400;
-    }
-
+    .date-label { font-size: 14px; color: var(--ink-soft); font-weight: 400; }
     .date-input {
-      background: transparent;
-      border: none;
-      font-family: 'Heebo', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--ink);
-      direction: ltr;
-      text-align: left;
-      cursor: pointer;
+      background: transparent; border: none;
+      font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 500;
+      color: var(--ink); direction: ltr; text-align: left; cursor: pointer;
     }
-
     .date-input:focus { outline: none; }
-
-    /* ===== DESCRIPTION ===== */
     .desc-input {
-      width: 100%;
-      background: var(--bg-elevated);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 15px;
-      color: var(--ink);
-      text-align: right;
+      width: 100%; background: var(--bg-elevated); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      font-family: 'Heebo', sans-serif; font-size: 15px; color: var(--ink); text-align: right;
     }
-
     .desc-input::placeholder { color: var(--ink-soft); opacity: 0.7; }
-    .desc-input:focus {
-      outline: none;
-      border-color: var(--denim-light);
-    }
-
-    /* ===== LAUNCH BUTTON ===== */
+    .desc-input:focus { outline: none; border-color: var(--denim-light); }
     .launch-btn {
-      width: 100%;
-      background: var(--denim);
-      color: var(--bg);
-      border: none;
-      border-radius: var(--radius);
-      padding: 20px;
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-strong);
-      font-variation-settings: "opsz" 144;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      direction: ltr;
+      width: 100%; background: var(--denim); color: var(--bg); border: none;
+      border-radius: var(--radius); padding: 20px;
+      font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 600;
+      letter-spacing: -0.5px; cursor: pointer; transition: all 0.2s ease;
+      box-shadow: var(--shadow-strong); font-variation-settings: "opsz" 144;
+      display: flex; align-items: center; justify-content: center; gap: 10px; direction: ltr;
     }
-
-    .launch-btn:active {
-      transform: translateY(1px);
-      background: var(--denim-dark);
-    }
-
-    .launch-btn:disabled {
-      background: var(--line);
-      color: var(--ink-soft);
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-
-    .launch-btn .arrow {
-      font-size: 24px;
-      line-height: 0;
-    }
-
-    /* ===== TOAST ===== */
+    .launch-btn:active { transform: translateY(1px); background: var(--denim-dark); }
+    .launch-btn:disabled { background: var(--line); color: var(--ink-soft); box-shadow: none; cursor: not-allowed; }
+    .launch-btn .arrow { font-size: 24px; line-height: 0; }
     .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
+      position: fixed; bottom: 30px; left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: var(--ink);
-      color: var(--bg);
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      box-shadow: var(--shadow-strong);
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 100;
-      pointer-events: none;
-      max-width: 90vw;
-      text-align: center;
+      background: var(--ink); color: var(--bg);
+      padding: 14px 22px; border-radius: 999px;
+      font-family: 'Heebo', sans-serif; font-size: 14px; font-weight: 500;
+      box-shadow: var(--shadow-strong); opacity: 0;
+      transition: all 0.3s ease; z-index: 100; pointer-events: none;
+      max-width: 90vw; text-align: center;
     }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
     .toast.success { background: var(--success); }
     .toast.error { background: var(--danger); }
-
-    /* ===== SETTINGS LINK ===== */
-    .footer {
-      text-align: center;
-      padding: 8px 0;
-    }
-
+    .footer { text-align: center; padding: 8px 0; }
     .settings-link {
-      font-family: 'Heebo', sans-serif;
-      font-size: 12px;
-      color: var(--ink-soft);
-      text-decoration: none;
-      letter-spacing: 1px;
+      font-family: 'Heebo', sans-serif; font-size: 12px;
+      color: var(--ink-soft); text-decoration: none; letter-spacing: 1px;
     }
-
-    /* ===== SETTINGS MODAL ===== */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(26, 35, 50, 0.5);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 200;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
+      position: fixed; inset: 0; background: rgba(26, 35, 50, 0.5);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      z-index: 200; display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
     }
-
-    .modal-overlay.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
+    .modal-overlay.show { opacity: 1; pointer-events: auto; }
     .modal {
-      background: var(--bg);
-      width: 100%;
-      max-width: 480px;
+      background: var(--bg); width: 100%; max-width: 480px;
       border-radius: 24px 24px 0 0;
       padding: 24px 20px calc(40px + env(safe-area-inset-bottom));
       transform: translateY(100%);
       transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
-      max-height: 90vh;
-      overflow-y: auto;
+      max-height: 90vh; overflow-y: auto;
     }
-
-    .modal-overlay.show .modal {
-      transform: translateY(0);
-    }
-
-    .modal-handle {
-      width: 40px;
-      height: 4px;
-      background: var(--line);
-      border-radius: 2px;
-      margin: 0 auto 20px;
-    }
-
+    .modal-overlay.show .modal { transform: translateY(0); }
+    .modal-handle { width: 40px; height: 4px; background: var(--line); border-radius: 2px; margin: 0 auto 20px; }
     .modal-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--denim);
-      margin-bottom: 6px;
-      text-align: center;
-      letter-spacing: -1px;
+      font-family: 'Fraunces', Georgia, serif; font-size: 26px; font-weight: 600;
+      color: var(--denim); margin-bottom: 6px; text-align: center; letter-spacing: -1px;
     }
-
-    .modal-subtitle {
-      font-size: 13px;
-      color: var(--ink-soft);
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
+    .modal-subtitle { font-size: 13px; color: var(--ink-soft); text-align: center; margin-bottom: 24px; }
     .field-group { margin-bottom: 18px; }
-
     .field-label {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      font-size: 12px; font-weight: 500; color: var(--ink-soft);
+      margin-bottom: 6px; letter-spacing: 1px; text-transform: uppercase;
     }
-
     .field-input {
-      width: 100%;
-      background: var(--bg-elevated);
-      border: 1px solid var(--line-soft);
-      border-radius: var(--radius-sm);
-      padding: 14px 16px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 14px;
-      color: var(--ink);
-      direction: ltr;
-      text-align: left;
+      width: 100%; background: var(--bg-elevated); border: 1px solid var(--line-soft);
+      border-radius: var(--radius-sm); padding: 14px 16px;
+      font-family: 'Heebo', sans-serif; font-size: 14px;
+      color: var(--ink); direction: ltr; text-align: left;
     }
-
-    .field-input:focus {
-      outline: none;
-      border-color: var(--denim-light);
-    }
-
+    .field-input:focus { outline: none; border-color: var(--denim-light); }
     .modal-btn {
-      width: 100%;
-      background: var(--denim);
-      color: var(--bg);
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 16px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 8px;
+      width: 100%; background: var(--denim); color: var(--bg); border: none;
+      border-radius: var(--radius-sm); padding: 16px;
+      font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 600;
+      cursor: pointer; margin-top: 8px;
     }
-
     .modal-help {
-      font-size: 12px;
-      color: var(--ink-soft);
-      line-height: 1.6;
-      margin-top: 16px;
-      padding: 14px;
-      background: var(--denim-faint);
-      border-radius: var(--radius-sm);
+      font-size: 12px; color: var(--ink-soft); line-height: 1.6;
+      margin-top: 16px; padding: 14px;
+      background: var(--denim-faint); border-radius: var(--radius-sm);
     }
-
-    .modal-help a {
-      color: var(--denim);
-      font-weight: 500;
-    }
-
-    /* ===== INVISIBLE DATE PICKER ===== */
-    .date-native {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-      width: 1px;
-      height: 1px;
-    }
+    .modal-help a { color: var(--denim); font-weight: 500; }
+    .date-native { position: absolute; opacity: 0; pointer-events: none; width: 1px; height: 1px; }
   </style>
 </head>
 <body>
-  <div class="app">
-
-    <!-- HEADER -->
+<div class="app">
     <header class="header">
       <div class="logo">Xpnd.</div>
       <div class="logo-tagline">Track every baht</div>
     </header>
 
-    <!-- AMOUNT + CURRENCY -->
     <section class="amount-section">
       <div class="amount-display">
         <div class="amount-value empty" id="amountDisplay">
@@ -550,7 +234,6 @@
       </div>
     </section>
 
-    <!-- KEYPAD -->
     <section>
       <div class="keypad" id="keypad">
         <button class="key" data-key="1">1</button>
@@ -568,7 +251,6 @@
       </div>
     </section>
 
-    <!-- CATEGORY -->
     <section>
       <div class="section-label">קטגוריה</div>
       <div class="categories" id="categories">
@@ -587,13 +269,11 @@
       </div>
     </section>
 
-    <!-- DESCRIPTION -->
     <section>
       <div class="section-label">תיאור (אופציונלי)</div>
       <input type="text" class="desc-input" id="descInput" placeholder="פירוט ההוצאה..." maxlength="100">
     </section>
 
-    <!-- DATE -->
     <section>
       <div class="section-label">תאריך</div>
       <div class="date-wrap" id="dateWrap">
@@ -603,23 +283,18 @@
       </div>
     </section>
 
-    <!-- LAUNCH -->
     <button class="launch-btn" id="launchBtn" disabled>
       <span>Launch Expense</span>
       <span class="arrow">→</span>
     </button>
 
-    <!-- FOOTER -->
     <footer class="footer">
       <a href="#" class="settings-link" id="settingsLink">⚙ הגדרות</a>
     </footer>
-
   </div>
 
-  <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
-  <!-- SETTINGS MODAL -->
   <div class="modal-overlay" id="settingsModal">
     <div class="modal">
       <div class="modal-handle"></div>
@@ -633,21 +308,20 @@
 
       <div class="field-group">
         <div class="field-label">שערי מטבע</div>
-        <input type="text" class="field-input" id="rateThbIls" placeholder="THB → ILS (לדוגמה: 0.089)" inputmode="decimal">
-        <input type="text" class="field-input" id="rateUsdIls" placeholder="USD → ILS (לדוגמה: 2.89)" inputmode="decimal" style="margin-top:8px;">
-        <input type="text" class="field-input" id="rateEurIls" placeholder="EUR → ILS (לדוגמה: 3.95)" inputmode="decimal" style="margin-top:8px;">
+        <input type="text" class="field-input" id="rateThbIls" placeholder="THB → ILS" inputmode="decimal">
+        <input type="text" class="field-input" id="rateUsdIls" placeholder="USD → ILS" inputmode="decimal" style="margin-top:8px;">
+        <input type="text" class="field-input" id="rateEurIls" placeholder="EUR → ILS" inputmode="decimal" style="margin-top:8px;">
       </div>
 
       <button class="modal-btn" id="saveSettings">שמור</button>
 
       <div class="modal-help">
-        בכל פעם שאני שולח הוצאה, היא נכתבת לטבלת הגוגל שיטס שלך. עליך להגדיר Apps Script וה־URL שלו פעם אחת.
+        בכל פעם שאני שולח הוצאה, היא נכתבת לטבלת הגוגל שיטס שלך.
       </div>
     </div>
   </div>
 
   <script>
-    // ===== STATE =====
     const state = {
       amount: '',
       currency: 'THB',
@@ -661,8 +335,6 @@
     };
 
     const SYMBOLS = { THB: '฿', ILS: '₪', USD: '$', EUR: '€' };
-
-    // ===== ELEMENTS =====
     const $ = id => document.getElementById(id);
     const amountNumber = $('amountNumber');
     const amountDisplay = $('amountDisplay');
@@ -676,7 +348,6 @@
     const toast = $('toast');
     const settingsModal = $('settingsModal');
 
-    // ===== LOAD SETTINGS =====
     function loadSettings() {
       const saved = localStorage.getItem('xpnd_settings');
       if (saved) {
@@ -692,92 +363,71 @@
       localStorage.setItem('xpnd_settings', JSON.stringify(state.settings));
     }
 
-    // ===== AMOUNT FORMATTING =====
     function formatAmount(num) {
       if (num === '' || num === null || num === undefined) return '0';
       const str = String(num);
-      const [int, dec] = str.split('.');
-      const formattedInt = Number(int).toLocaleString('en-US');
-      return dec !== undefined ? formattedInt + '.' + dec : formattedInt;
+      const parts = str.split('.');
+      const formattedInt = Number(parts[0]).toLocaleString('en-US');
+      return parts[1] !== undefined ? formattedInt + '.' + parts[1] : formattedInt;
     }
 
-    function getNumericAmount() {
-      return parseFloat(state.amount) || 0;
-    }
+    function getNumericAmount() { return parseFloat(state.amount) || 0; }
 
     function updateAmountDisplay() {
       amountNumber.textContent = formatAmount(state.amount || '0');
       currencySymbol.textContent = SYMBOLS[state.currency];
-
       if (state.amount && parseFloat(state.amount) > 0) {
         amountDisplay.classList.remove('empty');
       } else {
         amountDisplay.classList.add('empty');
       }
-
       updateConverted();
       updateLaunchState();
     }
 
-    // ===== CONVERSION =====
     function toIls(amount, currency) {
       const r = state.settings.rates;
-      switch (currency) {
-        case 'ILS': return amount;
-        case 'THB': return amount * r.THB_ILS;
-        case 'USD': return amount * r.USD_ILS;
-        case 'EUR': return amount * r.EUR_ILS;
-      }
+      if (currency === 'ILS') return amount;
+      if (currency === 'THB') return amount * r.THB_ILS;
+      if (currency === 'USD') return amount * r.USD_ILS;
+      if (currency === 'EUR') return amount * r.EUR_ILS;
       return amount;
     }
 
     function fromIls(ilsAmount, currency) {
       const r = state.settings.rates;
-      switch (currency) {
-        case 'ILS': return ilsAmount;
-        case 'THB': return ilsAmount / r.THB_ILS;
-        case 'USD': return ilsAmount / r.USD_ILS;
-        case 'EUR': return ilsAmount / r.EUR_ILS;
-      }
+      if (currency === 'ILS') return ilsAmount;
+      if (currency === 'THB') return ilsAmount / r.THB_ILS;
+      if (currency === 'USD') return ilsAmount / r.USD_ILS;
+      if (currency === 'EUR') return ilsAmount / r.EUR_ILS;
       return ilsAmount;
     }
 
     function updateConverted() {
       const amount = getNumericAmount();
-      if (!amount) {
-        amountConverted.textContent = '';
-        return;
-      }
+      if (!amount) { amountConverted.textContent = ''; return; }
       const ils = toIls(amount, state.currency);
       const usd = ils / state.settings.rates.USD_ILS;
       const thb = ils / state.settings.rates.THB_ILS;
-
       const parts = [];
-      if (state.currency !== 'ILS') parts.push(`₪${ils.toFixed(2)}`);
-      if (state.currency !== 'USD') parts.push(`$${usd.toFixed(2)}`);
-      if (state.currency !== 'THB') parts.push(`฿${thb.toFixed(0)}`);
-
-      amountConverted.innerHTML = parts.map(p => `<span>${p}</span>`).join('');
+      if (state.currency !== 'ILS') parts.push('₪' + ils.toFixed(2));
+      if (state.currency !== 'USD') parts.push('$' + usd.toFixed(2));
+      if (state.currency !== 'THB') parts.push('฿' + thb.toFixed(0));
+      amountConverted.innerHTML = parts.map(p => '<span>' + p + '</span>').join('');
     }
 
-    // ===== KEYPAD =====
     function handleKey(key) {
       if (key === 'del') {
         state.amount = state.amount.slice(0, -1);
       } else if (key === '.') {
-        if (!state.amount.includes('.')) {
-          state.amount = (state.amount || '0') + '.';
-        }
+        if (!state.amount.includes('.')) state.amount = (state.amount || '0') + '.';
       } else {
         if (state.amount.includes('.')) {
           const dec = state.amount.split('.')[1];
           if (dec && dec.length >= 2) return;
         }
-        if (state.amount === '0' && key !== '.') {
-          state.amount = key;
-        } else if (state.amount.length < 12) {
-          state.amount += key;
-        }
+        if (state.amount === '0' && key !== '.') state.amount = key;
+        else if (state.amount.length < 12) state.amount += key;
       }
       updateAmountDisplay();
     }
@@ -788,33 +438,24 @@
       handleKey(btn.dataset.key);
     });
 
-    // ===== CURRENCY SWITCH =====
     document.getElementById('currencyRow').addEventListener('click', e => {
       const btn = e.target.closest('.currency-pill');
       if (!btn) return;
       const newCurrency = btn.dataset.currency;
       if (newCurrency === state.currency) return;
-
-      // Convert current amount to new currency
       const currentAmount = getNumericAmount();
       if (currentAmount > 0) {
         const ilsValue = toIls(currentAmount, state.currency);
         const newAmount = fromIls(ilsValue, newCurrency);
-        // Round nicely based on currency
-        if (newCurrency === 'THB') {
-          state.amount = String(Math.round(newAmount));
-        } else {
-          state.amount = String(Math.round(newAmount * 100) / 100);
-        }
+        if (newCurrency === 'THB') state.amount = String(Math.round(newAmount));
+        else state.amount = String(Math.round(newAmount * 100) / 100);
       }
-
       state.currency = newCurrency;
       document.querySelectorAll('.currency-pill').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
       updateAmountDisplay();
     });
 
-    // ===== CATEGORIES =====
     document.getElementById('categories').addEventListener('click', e => {
       const btn = e.target.closest('.cat');
       if (!btn) return;
@@ -824,19 +465,15 @@
       updateLaunchState();
     });
 
-    // ===== DESCRIPTION =====
-    descInput.addEventListener('input', e => {
-      state.description = e.target.value;
-    });
+    descInput.addEventListener('input', e => { state.description = e.target.value; });
 
-    // ===== DATE =====
     function formatDateForDisplay(isoDate) {
       const d = new Date(isoDate + 'T00:00:00');
       const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
       const dd = String(d.getDate()).padStart(2,'0');
       const mm = String(d.getMonth()+1).padStart(2,'0');
       const yy = String(d.getFullYear()).slice(2);
-      return `${days[d.getDay()]} • ${dd}/${mm}/${yy}`;
+      return days[d.getDay()] + ' • ' + dd + '/' + mm + '/' + yy;
     }
 
     function setDate(iso) {
@@ -846,37 +483,28 @@
     }
 
     dateWrap.addEventListener('click', () => {
-      dateInput.showPicker ? dateInput.showPicker() : dateInput.click();
+      if (dateInput.showPicker) dateInput.showPicker(); else dateInput.click();
     });
 
-    dateInput.addEventListener('change', e => {
-      if (e.target.value) setDate(e.target.value);
-    });
+    dateInput.addEventListener('change', e => { if (e.target.value) setDate(e.target.value); });
 
-    // ===== LAUNCH STATE =====
     function updateLaunchState() {
-      const ready = getNumericAmount() > 0 && state.category;
-      launchBtn.disabled = !ready;
+      launchBtn.disabled = !(getNumericAmount() > 0 && state.category);
     }
 
-    // ===== TOAST =====
     let toastTimer;
-    function showToast(message, type = '') {
+    function showToast(message, type) {
       toast.textContent = message;
-      toast.className = 'toast show ' + type;
+      toast.className = 'toast show ' + (type || '');
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3000);
+      toastTimer = setTimeout(() => { toast.classList.remove('show'); }, 3500);
     }
 
-    // ===== SUBMIT =====
     launchBtn.addEventListener('click', async () => {
       const amount = getNumericAmount();
       if (!amount || !state.category) return;
-
       if (!state.settings.webhookUrl) {
-        showToast('הגדר תחילה Apps Script URL בהגדרות', 'error');
+        showToast('הגדר תחילה Apps Script URL', 'error');
         openSettings();
         return;
       }
@@ -895,15 +523,13 @@
       launchBtn.innerHTML = '<span>שולח...</span>';
 
       try {
-        // Use no-cors mode for Apps Script - we won't get the response but the request goes through
-        await fetch(state.settings.webhookUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
-        });
+        const dataParam = encodeURIComponent(JSON.stringify(payload));
+        const sep = state.settings.webhookUrl.includes('?') ? '&' : '?';
+        const url = state.settings.webhookUrl + sep + 'data=' + dataParam;
+        const response = await fetch(url, { method: 'GET', redirect: 'follow' });
+        const result = await response.json();
+        if (!result.ok) throw new Error(result.error || 'שגיאה לא ידועה');
 
-        // Reset
         showToast('✓ ההוצאה נשלחה לטבלה', 'success');
         state.amount = '';
         state.category = null;
@@ -911,17 +537,15 @@
         descInput.value = '';
         document.querySelectorAll('.cat').forEach(c => c.classList.remove('active'));
         updateAmountDisplay();
-        // Haptic-ish feedback on iOS
         if (navigator.vibrate) navigator.vibrate(50);
       } catch (err) {
-        showToast('שגיאה בשליחה. בדוק חיבור', 'error');
+        showToast('שגיאה: ' + (err.message || err), 'error');
       } finally {
         launchBtn.innerHTML = originalText;
         updateLaunchState();
       }
     });
 
-    // ===== SETTINGS MODAL =====
     function openSettings() {
       $('webhookInput').value = state.settings.webhookUrl || '';
       $('rateThbIls').value = state.settings.rates.THB_ILS;
@@ -930,18 +554,10 @@
       settingsModal.classList.add('show');
     }
 
-    function closeSettings() {
-      settingsModal.classList.remove('show');
-    }
+    function closeSettings() { settingsModal.classList.remove('show'); }
 
-    $('settingsLink').addEventListener('click', e => {
-      e.preventDefault();
-      openSettings();
-    });
-
-    settingsModal.addEventListener('click', e => {
-      if (e.target === settingsModal) closeSettings();
-    });
+    $('settingsLink').addEventListener('click', e => { e.preventDefault(); openSettings(); });
+    settingsModal.addEventListener('click', e => { if (e.target === settingsModal) closeSettings(); });
 
     $('saveSettings').addEventListener('click', () => {
       state.settings.webhookUrl = $('webhookInput').value.trim();
@@ -957,10 +573,9 @@
       showToast('ההגדרות נשמרו', 'success');
     });
 
-    // ===== INIT =====
     loadSettings();
     setDate(state.date);
     updateAmountDisplay();
   </script>
 </body>
-</html>
+</html>  
