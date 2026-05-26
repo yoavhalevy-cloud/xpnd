@@ -105,8 +105,7 @@ body{min-height:100vh;min-height:100dvh;padding:env(safe-area-inset-top) env(saf
 </div></section>
 <section><div class="label">תיאור (אופציונלי)</div><input type="text" class="desc" id="descInput" placeholder="פירוט ההוצאה..." maxlength="100"></section>
 <section><div class="label">תאריך</div>
-<div class="date-wrap" id="dateWrap"><span class="date-lab">📅</span><span class="date-disp" id="dateDisplay"></span><input type="date" id="dateInput" class="date-native"></div>
-</section>
+<div class="date-wrap"><label for="dateInput" class="date-lab" style="cursor:pointer">📅</label><input type="date" id="dateInput" style="background:transparent;border:none;font-family:'Heebo',sans-serif;font-size:15px;font-weight:500;color:var(--ink);direction:ltr;text-align:left;flex:1;cursor:pointer;-webkit-appearance:none;appearance:none;min-height:24px"></div></section>
 <button class="launch" id="launchBtn" disabled><span>Launch Expense</span><span class="arrow">→</span></button>
 <footer class="footer"><a href="#" class="settings-link" id="settingsLink">⚙ הגדרות</a></footer>
 </div>
@@ -145,8 +144,7 @@ $('categories').addEventListener('click',e=>{const b=e.target.closest('.cat');if
 descInput.addEventListener('input',e=>{state.description=e.target.value});
 function formatDateForDisplay(iso){const d=new Date(iso+'T00:00:00'),days=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'],dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yy=String(d.getFullYear()).slice(2);return days[d.getDay()]+' • '+dd+'/'+mm+'/'+yy}
 function setDate(iso){state.date=iso;dateInput.value=iso;dateDisplay.textContent=formatDateForDisplay(iso)}
-dateWrap.addEventListener('click',()=>{if(dateInput.showPicker)dateInput.showPicker();else dateInput.click()});
-dateInput.addEventListener('change',e=>{if(e.target.value)setDate(e.target.value)});
+dateInput.addEventListener('change',e=>{if(e.target.value)state.date=e.target.value});
 function updateLaunchState(){launchBtn.disabled=!(getNumericAmount()>0&&state.category)}
 let toastTimer;function showToast(m,t){toast.textContent=m;toast.className='toast show '+(t||'');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),3500)}
 
